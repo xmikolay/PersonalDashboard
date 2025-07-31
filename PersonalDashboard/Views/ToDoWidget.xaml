@@ -6,7 +6,32 @@
              xmlns:local="clr-namespace:PersonalDashboard.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Task input -->
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="200" Text="{Binding NewTaskText, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,10,0"/>
+            <Button Content="Add" Command="{Binding AddTaskCommand}"/>
+        </StackPanel>
+
+        <!-- Task list -->
+        <ListBox Grid.Row="1" ItemsSource="{Binding Tasks}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <CheckBox IsChecked="{Binding IsCompleted}" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Description}" VerticalAlignment="Center"/>
+                        <Button Content="X"
+                                DockPanel.Dock="Right"
+                                Command="{Binding DataContext.RemoveTaskCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                CommandParameter="{Binding}" Margin="5,0,0,0"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

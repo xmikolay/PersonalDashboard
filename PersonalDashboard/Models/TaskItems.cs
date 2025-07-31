@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PersonalDashboard.Models
 {
-    internal class TaskItems
+    public class TaskItems
     {
+        public string Description { get; set; }
+        public bool isCompleted { get; set; }
     }
 }
