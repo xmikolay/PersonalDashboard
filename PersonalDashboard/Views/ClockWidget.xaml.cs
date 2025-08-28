@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PersonalDashboard.ViewModels;
 
 namespace PersonalDashboard.Views
 {
@@ -23,6 +24,7 @@ namespace PersonalDashboard.Views
         public ClockWidget()
         {
             InitializeComponent();
+            DataContext = new ClockViewModel();
         }
     }
 }
