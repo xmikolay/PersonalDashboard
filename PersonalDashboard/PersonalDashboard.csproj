@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\TimeFormatter.cs" />
+    <Compile Include="Models\EventItem.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\TaskItems.cs" />
     <Compile Include="Models\WeatherData.cs" />
@@ -68,11 +69,15 @@
     <Compile Include="Services\ToDoService.cs" />
     <Compile Include="Services\WeatherService.cs" />
     <Compile Include="Services\WotApiService.cs" />
+    <Compile Include="ViewModels\CalendarViewModel.cs" />
     <Compile Include="ViewModels\ClockViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ToDoViewModel.cs" />
     <Compile Include="ViewModels\WeatherViewModel.cs" />
     <Compile Include="ViewModels\WotViewModel.cs" />
+    <Compile Include="Views\CalendarWidget.xaml.cs">
+      <DependentUpon>CalendarWidget.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ClockWidget.xaml.cs">
       <DependentUpon>ClockWidget.xaml</DependentUpon>
     </Compile>
@@ -100,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\CalendarWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ClockWidget.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
