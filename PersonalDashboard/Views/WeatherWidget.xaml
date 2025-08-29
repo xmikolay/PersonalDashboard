@@ -6,7 +6,41 @@
              xmlns:local="clr-namespace:PersonalDashboard.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Border Padding="10" Margin="10"
+            BorderBrush="#33000000" BorderThickness="1" CornerRadius="8">
+        <StackPanel>
+
+            <!-- Header -->
+            <TextBlock Text="{Binding LocationLabel}"
+                       FontSize="16" FontWeight="SemiBold" Margin="0,0,0,6"/>
+
+            <!-- Current conditions -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                <TextBlock Text="{Binding CurrentTemp}" FontSize="28" FontWeight="Bold" />
+                <TextBlock Text="  •  " FontSize="20" Opacity="0.6" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding CurrentSummary}" FontSize="16" VerticalAlignment="Center"/>
+                <TextBlock Text="  •  " FontSize="20" Opacity="0.6" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding CurrentWind}" FontSize="16" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Next 3 days -->
+            <ItemsControl ItemsSource="{Binding NextDays}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel Margin="0,2">
+                            <TextBlock Text="{Binding Date, StringFormat='{}{0:ddd}'}"
+                                       Width="40" Opacity="0.8"/>
+                            <TextBlock Text="{Binding Summary}" Margin="6,0" Opacity="0.9"/>
+                            <TextBlock Text="{Binding Min, StringFormat='{}{0:0}°'}"
+                                       DockPanel.Dock="Right" Width="36" TextAlignment="Right" Opacity="0.8"/>
+                            <TextBlock Text=" / " DockPanel.Dock="Right" Width="16" TextAlignment="Center" Opacity="0.6"/>
+                            <TextBlock Text="{Binding Max, StringFormat='{}{0:0}°'}"
+                                       DockPanel.Dock="Right" Width="36" TextAlignment="Right" FontWeight="SemiBold"/>
+                        </DockPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+    </Border>
 </UserControl>

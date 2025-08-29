@@ -11,5 +11,6 @@
         <views:ToDoWidget HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
         <views:ClockWidget HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <views:CalendarWidget HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
+        <views:WeatherWidget HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
