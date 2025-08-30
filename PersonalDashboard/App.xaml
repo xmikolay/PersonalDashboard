@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:PersonalDashboard"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DropShadowEffect x:Key="CardShadow" Color="Black" ShadowDepth="4" Opacity="0.35" BlurRadius="16"/>
+
+        <Style x:Key="DashboardCard" TargetType="Border">
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Background" Value="#CC1E1E1E"/>
+            <Setter Property="Padding" Value="16"/>
+            <Setter Property="Margin" Value="16"/>
+            <Setter Property="Effect" Value="{StaticResource CardShadow}"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+        </Style>
     </Application.Resources>
 </Application>

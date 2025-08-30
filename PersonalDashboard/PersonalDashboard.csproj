@@ -161,5 +161,8 @@
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\Styles\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wallpaper\chrome.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,11 +6,50 @@
         xmlns:local="clr-namespace:PersonalDashboard"
         xmlns:views="clr-namespace:PersonalDashboard.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Dashboard"
+        WindowStyle="None"
+        WindowState="Maximized"
+        AllowsTransparency="False"
+        ResizeMode="NoResize" 
+        MouseDown="Window_MouseDown">
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Wallpaper/chrome.png" Stretch="UniformToFill"/>
+    </Window.Background>
+    
     <Grid>
-        <views:ToDoWidget HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
-        <views:ClockWidget HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <views:CalendarWidget HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
-        <views:WeatherWidget HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Rectangle Fill="#66000000"/>
+
+        <Grid Margin="32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        
+
+            <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource DashboardCard}">
+                <views:ClockWidget/>
+            </Border>
+
+            <Border Grid.Row="0" Grid.Column="1" CornerRadius="12" Background="#CC1E1E1E" Padding="16" Margin="12" Style="{StaticResource DashboardCard}">
+                <views:CalendarWidget/>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource DashboardCard}">
+                <views:ToDoWidget/>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource DashboardCard}">
+                <views:WeatherWidget/>
+            </Border>
+        </Grid>
+        <!-- HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+         HorizontalAlignment="Center" VerticalAlignment="Top"/>
+         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
+         HorizontalAlignment="Center" VerticalAlignment="Bottom"/>-->
     </Grid>
 </Window>
