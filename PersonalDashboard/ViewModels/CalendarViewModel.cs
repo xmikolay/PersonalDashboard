@@ -63,6 +63,13 @@ namespace PersonalDashboard.ViewModels
             HasEvents = EventsForSelectedDate.Count > 0;
         }
 
+        private bool _isEventsOpen;
+        public bool IsEventsOpen
+        {
+            get => _isEventsOpen;
+            set { _isEventsOpen = value; OnPropertyChanged(); }
+        }
+
         //Our sample data
         private void SeedSampleEvents()
         {

@@ -16,40 +16,80 @@
     <Window.Background>
         <ImageBrush ImageSource="/Wallpaper/chrome.png" Stretch="UniformToFill"/>
     </Window.Background>
-    
+
     <Grid>
-        <Rectangle Fill="#66000000"/>
+        <!-- Keep the subtle overlay if you like -->
+        <Rectangle Fill="#44000000"/>
 
         <Grid Margin="32">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <!-- Make top/bottom spacers slightly asymmetric to nudge center lower/higher.
+           If your center looks a bit high, increase Row 0; if low, increase Row 6. -->
+                <RowDefinition Height="1.2*"/>
+                <!-- top spacer: bigger pushes center DOWN -->
+                <RowDefinition Height="Auto"/>
+                <!-- CLOCK -->
+                <RowDefinition Height="12"/>
+                <!-- spacer -->
+                <RowDefinition Height="Auto"/>
+                <!-- CALENDAR -->
+                <RowDefinition Height="24"/>
+                <!-- spacer -->
+                <RowDefinition Height="Auto"/>
+                <!-- BOTTOM STRIP (To-Do | Weather) -->
+                <RowDefinition Height="0.8*"/>
+                <!-- bottom spacer -->
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-        
 
-            <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource DashboardCard}">
-                <views:ClockWidget/>
+            <!-- CLOCK (centered + larger via Viewbox; card hugs content) -->
+            <Border Grid.Row="1"
+            Style="{StaticResource DashboardCard}"
+            HorizontalAlignment="Center">
+                <!-- Viewbox scales your existing ClockWidget up cleanly -->
+                <Viewbox Stretch="Uniform" MaxWidth="620">
+                    <!-- tweak MaxWidth to change size -->
+                    <views:ClockWidget />
+                </Viewbox>
             </Border>
 
-            <Border Grid.Row="0" Grid.Column="1" CornerRadius="12" Background="#CC1E1E1E" Padding="16" Margin="12" Style="{StaticResource DashboardCard}">
-                <views:CalendarWidget/>
+            <!-- CALENDAR (directly under clock, larger via Viewbox; card hugs content) -->
+            <Border Grid.Row="3"
+            Style="{StaticResource DashboardCard}"
+            HorizontalAlignment="Center">
+                <Viewbox Stretch="Uniform" MaxWidth="420">
+                    <!-- bump to ~450 if you want bigger -->
+                    <views:CalendarWidget />
+                </Viewbox>
             </Border>
 
-            <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource DashboardCard}">
-                <views:ToDoWidget/>
-            </Border>
+            <!-- BOTTOM STRIP (narrow, centered; cards no longer stretch full width) -->
+            <Grid Grid.Row="5" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="24"/>
+                    <!-- gutter -->
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource DashboardCard}">
-                <views:WeatherWidget/>
-            </Border>
+                <!-- To-Do: narrower; set a cap and center it -->
+                <Border Grid.Column="0"
+                     Style="{StaticResource DashboardCard}"
+                     HorizontalAlignment="Center"
+                     MaxHeight="420"  Width="900" MinHeight="220">
+                    <!-- adjust down/up as you like -->
+                    <views:ToDoWidget />
+                </Border>
+
+                <!-- Weather: compact -->
+                <Border Grid.Column="2"
+              Style="{StaticResource DashboardCard}"
+              HorizontalAlignment="Center"
+              MaxWidth="520"  Width="520">
+                    <!-- shrink/enlarge here -->
+                    <views:WeatherWidget />
+                </Border>
+            </Grid>
         </Grid>
-        <!-- HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
-         HorizontalAlignment="Center" VerticalAlignment="Top"/>
-         HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
-         HorizontalAlignment="Center" VerticalAlignment="Bottom"/>-->
     </Grid>
+
 </Window>
